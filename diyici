@@ -1,0 +1,65 @@
+
+ /*//===============================
+     工程架构第一次作业
+          吴子越
+	     31903112
+===================================*/ 
+#include<iostream>
+#include<assert.h>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+
+void InsertSort(int*a/*i*/, size_t n/*o*/);//排序算法函数//
+
+void print(int a[]/*o*/, int len/*o*/);//输出数组的函数//
+
+int main()
+{
+	srand((unsigned)time(NULL));//规定随机数随系统时间产生//
+	int a[9];
+	for (int i = 0; i < 10; ++i)//产生10个随机数//
+	{
+		a[i] = rand() % 100;
+		
+	}
+	cout << "排序前："  << endl;
+	print(a, 10);
+	cout << endl;
+	InsertSort(a, 10);
+	cout << "排序后："  << endl;
+	print(a, 10);
+	cout << endl;
+	return 0;
+}
+void InsertSort(int*a, size_t n)//排序算法函数//
+{
+	assert(a);
+	for (size_t i = 1; i < n; ++i)
+	{
+		int end = i - 1;
+		int tmp = a[i];
+		while (end >= 0)//循环条件//
+		{
+			if (a[end] > tmp)//比较这个数与前面数的大小，将较小的数排在前面//
+			{
+				a[end + 1] = a[end];
+				--end;
+			}
+			else
+				break;
+		}
+		a[end + 1] = tmp;
+	}
+}
+void print(int a[], int len)//输出数组的函数//
+{
+	assert(a);
+	int i;
+	for (i = 0; i < len; ++i)
+	{
+		cout << a[i] << " ";
+		
+
+	}
+}
